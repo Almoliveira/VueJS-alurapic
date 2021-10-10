@@ -2,6 +2,10 @@
 
 > A Vue.js project
 
+## Description
+
+Projeto baseado na Aula de Vue.JS da Alura.
+
 ## Build Setup
 
 ``` bash
