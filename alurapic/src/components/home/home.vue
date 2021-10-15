@@ -66,12 +66,13 @@ export default {
    methods: {
 
     remove(foto) {
-      this.$http
-        .delete(`http://localhost:3000/v1/fotos/${foto._id}`)
+
+      this.resource
+        .delete({id: foto._id})
         .then(
           () => {
-            let indice = this.fotos.indexOf(foto); // acha a posição da foto na lista
-            this.fotos.splice(indice, 1); // a instrução altera o array
+            let indice = this.fotos.indexOf(foto);
+            this.fotos.splice(indice, 1);
             this.mensagem = 'Foto removida com sucesso'
           }, 
           err => {
@@ -79,13 +80,15 @@ export default {
             console.log(err);
           }
         )
+
     }
   },
 
   created() {
-    this.$http
-      .get("http://localhost:3000/v1/fotos")
-      .then((res) => res.json())
+
+    this.resource = this.$resource('v1/fotos{/id}');
+    this.resource.query()
+    .then((res) => res.json())
       .then(
         (fotos) => (this.fotos = fotos),
         (err) => console.log(err)
