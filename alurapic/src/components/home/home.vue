@@ -3,6 +3,7 @@
   <div>
     <h1 class="centralizado" >{{ titulo }}</h1>
 
+ <p v-show="mensagem" class="centralizado">{{ mensagem }}</p>
     <input
       type="search"
       class="filtro"
@@ -47,6 +48,7 @@ export default {
       titulo: "Alurapic",
       fotos: [],
       filtro: "",
+      mensagem: ''
     };
   },
 
@@ -61,13 +63,25 @@ export default {
     },
   },
 
-  methods: {
+   methods: {
+
     remove(foto) {
-     
-        alert("Remover a foto " + foto.titulo);
-   
-    },
+      this.$http
+        .delete(`http://localhost:3000/v1/fotos/${foto._id}`)
+        .then(
+          () => {
+            let indice = this.fotos.indexOf(foto); // acha a posição da foto na lista
+            this.fotos.splice(indice, 1); // a instrução altera o array
+            this.mensagem = 'Foto removida com sucesso'
+          }, 
+          err => {
+            this.mensagem = 'Não foi possível remover a foto';
+            console.log(err);
+          }
+        )
+    }
   },
+
   created() {
     this.$http
       .get("http://localhost:3000/v1/fotos")
