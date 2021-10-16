@@ -7,6 +7,9 @@ import './directives/Transform';
 import VeeValidate from 'vee-validate';
 import msg from './pt_BR';
 
+import './assets/css/teste.css';
+
+import 'bootstrap/dist/css/bootstrap.css';
 
 Vue.use(VeeValidate, {
   locale: 'pt_BR',
