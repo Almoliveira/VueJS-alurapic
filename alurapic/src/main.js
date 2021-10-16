@@ -10,6 +10,10 @@ import msg from './pt_BR';
 import './assets/css/teste.css';
 
 import 'bootstrap/dist/css/bootstrap.css';
+import './assets/js/teste.js';
+
+import 'jquery/dist/jquery.js'; 
+import 'bootstrap/dist/js/bootstrap.js';
 
 Vue.use(VeeValidate, {
   locale: 'pt_BR',

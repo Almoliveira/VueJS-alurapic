@@ -48,22 +48,7 @@ export default {
 </script>
 
 
-<style scoped>
-.botao {
-  display: inline-block;
-  padding: 10px;
-  border-radius: 3px;
-  margin: 10px;
-  font-size: 1.2em;
-}
+<style scoped lang="scss">
 
-.botao-perigo {
-  background: firebrick;
-  color: white;
-}
-
-.botao-padrao {
-  background: darkcyan;
-  color: white;
-}
+@import './Botao.scss';
 </style>
